@@ -1,0 +1,52 @@
+#clarify the constraints and identify the user cases
+
+spend a few minutes questioning interviewer and agreeing on the scope of the system,
+make sure you know all the requirement the interviewer didn't tell you in the beginning
+
+
+User cases indicate the main function of the system, and constraints list the scale of the system such as request per second, requests types,
+date written per second, data read per second
+
+
+#high-level architecture design
+sketch the important components and the connections between them, but don't go into 
+some details, usually, a scalable system includes webserver(loab balancer), service(service partition)
+,database(primary/secondary database cluster, plug cache)
+
+#component design
+for each component, you need to write the specific api for each component, you may need to finish the 
+basic OOD design for a particular function, you may also need to design the database schema for the database
+
+
+#Focus on thought process
+what they care about is the thought process behind your design choice, being able to communicate effectively with 
+people around you, Working on problems with huge scope isn't something you can do in a vacuum.
+
+
+#Care about your thought processs
+Usually we will start by asking you to design a system that performs a specific task, the prompt will be simple,
+but don't be fooled, these problems are wide and bottomless, and the point is to see how much volume you can
+cover in 45 minutes; for the most part, you will steering the conversation, it's up to you to understand the problems.
+That might mean asking question, sketching digrame on the board, bouncing idea off your interviewer,
+you have to get a sense for the scope of the problem before you start exploring the space of possible solutions, and remeber, there is 
+no simple right answer to a real-world problem, everything is a tradeoff.
+
+#General topic you should be familiar with
+Concurrency. Do you understand threads, deadlock, and starvation? Do you know how to parallelize algorithms? Do you understand consistency and coherence?
+Networking. Do you roughly understand IPC and TCP/IP? Do you know the difference between throughput and latency, and when each is the relevant factor?
+Abstraction. You should understand the systems you’re building upon. Do you know roughly how an OS, file system, and database work? Do you know about the various levels of caching in a modern OS?
+Real-World Performance. You should be familiar with the speed of everything your computer can do, including the relative performance of RAM, disk, SSD and your network.
+Estimation. Estimation, especially in the form of a back-of-the-envelope calculation, is important because it helps you narrow down the list of possible solutions to only the ones that are feasible. Then you have only a few prototypes or micro-benchmarks to write.
+Availability and Reliability. Are you thinking about how things can fail, especially in a distributed environment? Do know how to design a system to cope with network failures? Do you understand durability?
+
+
+HOW TO PREPARE
+How do you get better at something? If your answer isn’t along the lines of “practice” or “hard work,” then I have a bridge to sell you. Just like you have to write a lot of code to get better at coding and do a lot of drills to get really good at basketball, you’ll need practice to get better at design. Here are some activities that can help:
+
+Do mock design sessions. Grab an empty room and a fellow engineer, and ask them to give you a design problem, preferably related to something they’ve worked on. Don’t think of it as an interview—just try to come up with the best solution you can. Design interviews are similar to actual design sessions, so getting better at one will make you better at the other.
+Work on an actual system. Contribute to OSS or build something with a friend. Treat your class projects as more than just academic exercises—actually focus on the architecture and the tradeoffs behind each decision. As with most things, the best way to learn is by doing.
+Do back-of-the-envelope calculations for something you’re building and then write micro-benchmarks to verify them. If your micro-benchmarks don’t match your back-of-the-envelope numbers, some part of your mental model will have to give, and you’ll learn something in the process.
+Dig into the performance characteristics of an open source system. For example, take a look at LevelDB. It’s new and clean and small and well-documented. Read about the implementation to understand how it stores its data on disk and how it compacts the data into levels. Ask yourself questions about tradeoffs: which kinds of data and sizes are optimal, and which degrade read/write performance? (Hint: think about random vs. sequential writes.)
+Learn how databases and operating systems work under the hood. These technologies are not only tools in your belt, but also a great source of design inspiration. If you can think like a DB or an OS and understand how each solves the problems it was designed to solve, you’ll be able to apply that mindset to other systems.
+
+

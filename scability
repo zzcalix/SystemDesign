@@ -1,0 +1,47 @@
+<sacle server - clone>
+
+<horizantally scale server to handle more request>
+public servers of a scalable web service is hidden behind a load balancer,
+this load balancer evenly distributes load(request from users) onto your group/clusters
+of application servers, user should always get the same request of his request back, every server
+has the same codebase without any customer info, which need to be stored in a centralized data store
+which is acessable for to all your application servers, it could be am external database or an external 
+persistent cache, 
+
+
+<scale database - NOSQL>
+1.stick to sql, hire a database administrator to tell him to do master-slave
+replication(read from slave, write from master) and upgrade your master server
+by adding more RAM (NOT THAT GOOD)
+2.denormalize data and no more JOIN in any database query, switch to a NOSQL database
+
+
+<scale database - distribute database>
+
+<scale database - cache>
+a cache is a simple key-value store and it should reside as a buffering layer between your
+application and your data storage, whenever you application has to read data it should first 
+try to retrieve dats from cache, if can't, then try to get the data from the main data source.
+Because cache is lighting-fast.
+cache object is highlt recommended.
+see your data as a object like you already do in your code, let your class assemble a dataset 
+from your database and then store the complete instance of the class or the assemble dataset in the 
+cache, 
+
+And the best part: it makes asynchronous processing possible! Just imagine an army of worker servers who 
+assemble your objects for you! The application just consumes the latest cached object and nearly never touches the databases anymore!
+
+
+Some ideas of objects to cache:
+
+user sessions (never use the database!)
+fully rendered blog articles
+activity streams
+user<->friend relationships 
+
+
+<scale - Asynchronism>
+1.doing the time-consuming work in advance and serving the finished work with a low request time.
+2.handle tasks asynchronously
+e.g. a user comes to your website and starts a very computing intensive task which would take 
+serveral minutes to finish, so the frontend of your website sends a job onto job queue, 
